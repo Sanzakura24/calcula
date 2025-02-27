@@ -3,14 +3,20 @@
 	margin-top:50px;
 	margin-bottom:100px;
 }
+.container {
+  margin-top:20px;
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
 .mortgage-calculator {
-  margin-top: 30px;
-	padding:35px;
-	border-radius: 20px;
-	box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.8);
+	padding:40px;
+	border-radius: 5px;
+	box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.18);
 }
 .mortgage-calculator #credit-purpose {
-	width: 100%;
+    width: 100%;
     background: #fff;
     border: 1px solid #ccc;
     height: 45px;
@@ -37,7 +43,7 @@ font-size: 12px;
 }
 .money, .text-input {
   width:100%;
-  border: 1px solid #850303;
+  border:none;
 }
 .text-input-percent {
   width:60%;
@@ -85,23 +91,25 @@ font-size: 12px;
 	display:block;
 }
 .mortgage-calculator #percent #bank-select {
-	width: 75%;
+	  width: 76%;
     float: left;
     background: #fff;
     border: 1px solid #ccc;
     height: 42px;
+    border-radius: 5px;
+    font-size:15px;
 }
 .mortgage-calculator #percent .bank-percent {
-	width: 17%;
+	width: 20%;
     float: left;
     background: #fff;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 9px;
     margin-left:2%;
     text-align: center;
-    color: #04B040;
-    font-size:16px;
+    color: #040404;
+    font-size:15px;
 }
 .mortgage-calculator .mc-item-first {
 	margin-top:27px;
@@ -118,7 +126,7 @@ font-size: 12px;
 	margin-top:40px;
 }
 .mortgage-calculator .mc-item-bottom p {
-	font-size:18px;
+	font-size:14px;
 	color:#333;
 	font-weight: 500;
 }
@@ -129,13 +137,18 @@ font-size: 12px;
 	padding:13px 20px;
 	border:none;
 }
-
 .creative-container {
-  margin-top: 30px;
+  margin-top: 3px;
 }
-
 .creative-img {
-  width:100%;
-  border-radius: 20px;
-  box-shadow: 0px 2px 13px rgba (0,0,0, 0.08);
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.08);
+}
+.col-md-3.col-md-4.col-xs-12 {
+	font-size:16px;
+  margin-top: 0px;
 }
