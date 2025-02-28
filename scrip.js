@@ -1,24 +1,13 @@
 // Функции для смены ипотечной программы (оставляем, если они нужны)
 function btnClicked() {
-  document.getElementById('ipoteka-modal-form-span').innerHTML = "Льготная ипотека для новостроек от 6,5%";
-  document.getElementById('mortgage-program').value = "Льготная ипотека для новостроек от 6,5%";
+  document.getElementById('ipoteka-modal-form-span').innerHTML = "Стандартная программа от 23%";
+  document.getElementById('mortgage-program').value = "Стандартная программа от 23%";
 }
 function btn2Clicked() {
-  document.getElementById('ipoteka-modal-form-span').innerHTML = "Семейная ипотека от 4,9%";
-  document.getElementById('mortgage-program').value = "Семейная ипотека от 4,9%";
+  document.getElementById('ipoteka-modal-form-span').innerHTML = "Семейная ипотека от 6.0%";
+  document.getElementById('mortgage-program').value = "Семейная ипотека от 6.0%";
 }
-function btn3Clicked() {
-  document.getElementById('ipoteka-modal-form-span').innerHTML = "Сельская ипотека от 2,7%";
-  document.getElementById('mortgage-program').value = "Сельская ипотека от 2,7%";
-}
-function btn4Clicked() {
-  document.getElementById('ipoteka-modal-form-span').innerHTML = "Покупка квартиры в новосторойке от 3,7%";
-  document.getElementById('mortgage-program').value = "Покупка квартиры в новосторойке от 3,7%";
-}
-function btn5Clicked() {
-  document.getElementById('ipoteka-modal-form-span').innerHTML = "Покупка вторичного жилья от 8,9%";
-  document.getElementById('mortgage-program').value = "Покупка вторичного жилья от 8,9%";
-}
+
 
 // Функция округления числа до двух знаков
 var rounded = function(number) {
@@ -62,8 +51,13 @@ var installmentToggle = document.getElementById("installment-toggle");
 
 // Функция пересчёта
 function recalc() {
+  var propertyPrice = parseFloat(slider.value);
+  firstPaymentSlider.max = (propertyPrice * 0.8).toString();
+  var firstPayment = parseFloat(firstPaymentSlider.value);
+  firstPaymentOutput.value = moneyFormat(firstPayment);
+  firstHidden.value - firstPayment.toString();
   // Расчёт суммы кредита
-  var credit = parseFloat(slider.value) - parseFloat(firstPaymentSlider.value);
+  var credit = propertyPrice - firstPayment;
   if (credit < 0) credit = 0;
   
   // Определяем срок кредита (в годах и месяцах)

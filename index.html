@@ -61,17 +61,8 @@
 							</div>
 							<input type="range" list="first-payment-tickmarks" min="300000" max="5000000" value="1000000" class="form-control-range" id="first-payment">
 							<datalist id="first-payment-tickmarks">
-								<option value="300000" label="300 тыс.">
-								<option value="500000">
-								<option value="1000000">
-								<option value="1500000">
-								<option value="2000000">
-								<option value="2500000">
-								<option value="3000000">
-								<option value="3500000">
-								<option value="4000000">
-								<option value="4500000">
-								<option value="5000000" label="5 млн.">
+								<option label="300 тыс.">
+								<option label="80%">
 							</datalist>
 							
 						</div>
@@ -94,14 +85,11 @@
 							<p>Выберите ипотечную программу или введите % ставку</p>
 							<div id="percent">
 								<select id="bank-select">
-									<option value="6.5" selected>Льготная ипотека для новостроек</option>
-									<option value="4.9">Семейная ипотека</option>
-									<option value="2.7">Сельская ипотека</option>
-									<option value="6.5">Покупка квартиры в новостройке</option>
-									<option value="8.9">Покупка вторичного жилья</option>
+									<option value="23" selected>Стандартная программа</option>
+									<option value="6.0">Семейная ипотека</option>
 								</select>
 								<div class="bank-percent">
-									<input class="text-input-percent" id="bank-percent-span" value="6.5">%
+									<input class="text-input-percent" id="bank-percent-span" value="23">%
 								</div>
 							</div>
 						</div>
@@ -118,7 +106,6 @@
 							<hr>
 						</div>
 						<div class="mc-item-bottom">
-							<p>Получите одобрение ипотеки<br>с этими условиями</p>
 							<button type="submit" class="calc-submit-btn popmake-ipoteka-calc pum-trigger" id="calc-submit" style="cursor: pointer;">Подать заявку</button>
 						</div>
 					</div>
