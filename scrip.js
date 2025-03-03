@@ -23,6 +23,9 @@ var moneyFormat = function(n) {
 }
 
 // Получаем элементы из DOM
+var matKap = document.querySelectorAll(".form-control-range");
+var formGroo = document.querySelector(".range-out")
+var rectangleSection = document.querySelector(".blue-rectangle");
 var mortgageSection = document.querySelector(".form-grop");
 var creditSumm = document.getElementById("credit-summ");
 var monthPay = document.getElementById("month-pay");
@@ -39,6 +42,11 @@ var firstPaymentOutput = document.getElementById("first-payment-output");
 var firstHidden = document.getElementById("first-payment-hidden");
 firstPaymentOutput.value = moneyFormat(firstPaymentSlider.value);
 
+var anotherFirstSlider = document.getElementById("another-first");
+var anotherFirstOutput = document.getElementById("another-first-output");
+var anotherHidden = document.getElementById("another-first-hidden");
+anotherFirstOutput.value = moneyFormat(anotherFirstSlider.value);
+
 var years = document.getElementById("years");
 var yearsOutput = document.getElementById("years-output");
 yearsOutput.value = years.value;
@@ -47,17 +55,19 @@ var percentSelect = document.getElementById("bank-select");
 var bankPercent = document.getElementById("bank-percent-span");
 
 // Элемент переключателя рассрочки
+var matToggle = document.getElementById("mat-toggle")
 var installmentToggle = document.getElementById("installment-toggle");
 
 // Функция пересчёта
 function recalc() {
   var propertyPrice = parseFloat(slider.value);
-  firstPaymentSlider.max = (propertyPrice * 0.8).toString();
-  var firstPayment = parseFloat(firstPaymentSlider.value);
-  firstPaymentOutput.value = moneyFormat(firstPayment);
-  firstHidden.value - firstPayment.toString();
+  var firstPayment = parseFloat((firstPaymentSlider.value));
+  var anotherFirst = parseFloat(anotherFirstSlider.value);
+  firstPaymentSlider.max = ((propertyPrice - anotherFirst) * 0.8).toString();
+  firstPaymentOutput.value = moneyFormat(firstPaymentSlider.value);
+  
   // Расчёт суммы кредита
-  var credit = propertyPrice - firstPayment;
+  var credit = propertyPrice - firstPayment - anotherFirst;
   if (credit < 0) credit = 0;
   
   // Определяем срок кредита (в годах и месяцах)
@@ -120,6 +130,18 @@ firstPaymentOutput.oninput = function() {
   recalc();
 }
 
+anotherFirstSlider.oninput = function () {
+  anotherHidden.value=this.value;
+  anotherFirstOutput.value = moneyFormat(anotherHidden.value);
+  recalc();
+}
+
+anotherFirstOutput.oninput=function () {
+  anotherHidden.value = this.value.replace(/ /g, "").replace(",00", "");
+  anotherFirstSlider.value = anotherHidden.value;
+  recalc();
+}
+
 // Срок кредита
 years.oninput = function() {
   yearsOutput.value = this.value;
@@ -153,17 +175,47 @@ if (installmentToggle) {
       // Отключаем ввод процентной ставки в режиме рассрочки
       percentSelect.disabled = true;
       bankPercent.disabled = true;
+      
       mortgageSection.classList.add("disabled-section");
+      rectangleSection.classList.remove("dis-sec");
+      rectangleSection.classList.add("dis-section");
       document.getElementById("years-label").label="4"
     } else {
       years.max = 30;
       percentSelect.disabled = false;
       bankPercent.disabled = false;
       mortgageSection.classList.remove("disabled-section");
+      rectangleSection.classList.remove("dis-section");
+      rectangleSection.classList.add("dis-sec");
       document.getElementById("years-label").label="30"
     }
     recalc();
   });
 }
 
+if(matToggle) {
+  matToggle.addEventListener("change", function(){
+
+    if (this.checked) {
+      matKap[2].classList.remove("disabled-section");
+      formGroo.classList.remove("disabled-section");
+      anotherFirstSlider.value = 690000;
+      anotherFirstOutput.value = moneyFormat(anotherFirstSlider.value);
+      recalc();
+
+    } else {
+      matKap[2].classList.add("disabled-section");
+      formGroo.classList.add("disabled-section");
+      anotherFirstSlider.value = 0;
+      anotherFirstOutput.value = moneyFormat(anotherFirstSlider.value);
+      recalc();
+    }
+    recalc();
+
+  });
+}
+
+matKap[2].classList.add("disabled-section");
+formGroo.classList.add("disabled-section");
+rectangleSection.classList.add("dis-sec");
 recalc();

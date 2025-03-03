@@ -66,6 +66,8 @@ font-size: 12px;
   cursor: pointer;
 }
 
+
+
 .mortgage-calculator input[type="range"]::-moz-range-thumb {
   width: 25px;
   height: 25px;
@@ -74,6 +76,15 @@ font-size: 12px;
   cursor: pointer;
 }
 .mortgage-calculator .range-output {
+	border:1px solid #ccc;
+	padding:10px;
+	border-bottom: none;
+	border-radius: 4px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.mortgage-calculator .range-out {
 	border:1px solid #ccc;
 	padding:10px;
 	border-bottom: none;
@@ -171,7 +182,7 @@ font-size: 12px;
   height: 14px;
   width: 14px;
   left: 4px;
-  bottom: 4px;
+  bottom: 3px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -183,13 +194,14 @@ input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
 input:checked + .slider:before {
-  -webkit-transform: translateX(20px);
-  -ms-transform: translateX(20px);
-  transform: translateX(20px);
+  -webkit-transform: translateX(19px);
+  -ms-transform: translateX(19px);
+  transform: translateX(19px);
 }
 /* Закруглённые ползунки */
 .slider.round {
   border-radius: 34px;
+  border: solid #0077b6 1px;
 }
 .slider.round:before {
   border-radius: 50%;
@@ -205,21 +217,29 @@ input:checked + .slider:before {
   pointer-events: none;
 }
 
+.dis-section {
+  background-color: #0077b6;
 
+}
+
+.dis-sec {
+  background-color: #48cae4;
+}
   
 .blue-rectangle {
-  
+  border-style: solid;
+  border: solid #023e8a 2px;
   text-align:center;
   position:relative;
-  background-color: #48cae4;
   display: inline-block;
   font-size: 20px;
   color: rgb(255, 255, 255);
   border-radius: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  
-  
+  margin-bottom: 10px; 
+
 }
-  
+
+
 
